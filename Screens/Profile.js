@@ -30,7 +30,7 @@ function Profile({ navigation }) {
       method: "GET",
       headers: {
         Authorization:
-          "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMzQ0ODI3NSwiZXhwIjoxNjMzNTM0Njc1LCJuYmYiOjE2MzM0NDgyNzUsImp0aSI6IlZmSERSUWdyR0lWVEx6bE0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.o98tj_37Bz1i5I62Cdhd2UzdSh9Aw3kurtCCEO0Z9qU",
+          "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMzUwNTY1MSwiZXhwIjoxNjMzNTkyMDUxLCJuYmYiOjE2MzM1MDU2NTEsImp0aSI6ImVYdzU4SE9sWTY3YnhqOTYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.Ar3CSoD2gbD000ybCXnKkHflSOT6VIk7ym1lsa_6VI4",
         Accept: "application / json",
       },
     });
@@ -66,7 +66,8 @@ function Profile({ navigation }) {
       setName(results.user.name);
       sethobbies(results.hobbies);
       setinterests(results.interests);
-      setimage(results.pictures[0].picture_url)
+      if(results.pictures[0] != null){
+      setimage(results.pictures[0].picture_url)}
       
     });
   }
@@ -113,7 +114,7 @@ function Profile({ navigation }) {
             
           )}
           />
-            
+            <View style={styles.header}></View>
           </View>
       </View>
     </View>
@@ -139,7 +140,8 @@ const styles = StyleSheet.create({
     marginBottom:10,
     alignSelf:'center',
     position: 'absolute',
-    marginTop:10
+    marginTop:10,
+    backgroundColor:"grey",
   },
   name:{
     fontSize:22,

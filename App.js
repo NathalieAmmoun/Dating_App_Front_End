@@ -68,7 +68,7 @@ export default function App(){
 function HomeStack(){
         return(
     
-      <Stack.Navigator initialRouteName="Profile">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} 
         options={{
           headerStyle: {
