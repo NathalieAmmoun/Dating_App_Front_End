@@ -5,10 +5,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View,button } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Home from "./Screens/Home";
-import SecondScreen from "./Screens/SecondScreen";
+import ContinueRegistration from "./Screens/ContinueRegistration";
+
 import Search from "./Screens/Search";
 import Notification from "./Screens/Notifications";
 import Profile from "./Screens/Profile";
+import AddHobby from "./Screens/AddHobby";
+import AddInterest from "./Screens/AddInterest";
 
 import LoginPage from "./Screens/Login";
 import SignupPage from "./Screens/Signup";
@@ -27,22 +30,22 @@ const AppStack = createNativeStackNavigator();
 
 
 export default function App(){
-  const [token,settoken]= useState('')
+  // const [token,settoken]= useState('')
 
-  useEffect(()=>{
-    getData()
-  },[token])
+  // useEffect(()=>{
+  //   getData()
+  // },[token])
 
-  const getData = ()=>{
-      AsyncStorage.getItem('access_token')
-      .then(value=>{
-        if(value != null){
-          settoken(value)
-          console.log(value)
-          console.log("token")
-        }
-      })
-    }
+  // const getData = ()=>{
+  //     AsyncStorage.getItem('access_token')
+  //     .then(value=>{
+  //       if(value != null){
+  //         settoken(value)
+  //         console.log(value)
+  //         console.log("token")
+  //       }
+  //     })
+  //   }
   
   
   return (
@@ -58,7 +61,11 @@ export default function App(){
           },
         }}/>
       <AppStack.Screen name="SignupPage" component={SignupPage}/>
-      <AppStack.Screen name="HomeStack" component={HomeStack}/>
+      <AppStack.Screen name="ContinueRegistration" component={ContinueRegistration}/>
+      <AppStack.Screen name="HomeStack" component={HomeStack}
+      options={{
+        header: ()=> null
+      }}/>
 
       </AppStack.Navigator >
     </NavigationContainer>
@@ -109,10 +116,8 @@ function HomeStack(){
               fontWeight: "bold",
             },
            }} />
-        <Stack.Screen
-          name="SecondScreen"
-          component={SecondScreen}
-          options={{
+        <Stack.Screen name="AddHobby" component={AddHobby} 
+        options={{
             headerStyle: {
               backgroundColor: "#FE5267",
             },
@@ -120,8 +125,18 @@ function HomeStack(){
             headerTitleStyle: {
               fontWeight: "bold",
             },
-          }}
-        />
+           }} />
+        <Stack.Screen name="AddInterest" component={AddInterest} 
+        options={{
+            headerStyle: {
+              backgroundColor: "#FE5267",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+           }} />
+       
       </Stack.Navigator>
     
   )}
