@@ -11,10 +11,6 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-
-
-
- 
 export default function SignupPage({ navigation }) {
   var radio_props = [
         {label: 'Male', value: "0" },
@@ -28,21 +24,17 @@ export default function SignupPage({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
-  const [gender, setGender] = useState("");
-  const [interested_in, setInterested_in] = useState("");
+  const [gender, setGender] = useState("0");
+  const [interested_in, setInterested_in] = useState("0");
   const [dob, setDOB] = useState("");
-
-
   function register(){
      registerAPI().then(user_data=>{
+      navigation.navigate('ContinueRegistration');
        console.log(user_data);
    }).catch(error => {
      console.log(error.message);
    });
-  
   }
-  
-  
   async function registerAPI(){
     const response = await fetch("http://127.0.0.1:8000/api/auth/register", {
         method: 'POST',
@@ -60,11 +52,9 @@ export default function SignupPage({ navigation }) {
       const message = "Error Occurred";
       throw new Error(message);
   }
-  
   const user_data = await response.json();
   return user_data;
 }
- 
   return (
     <ScrollView style={styles.mainContainer}>
       <View style={styles.scrollViewContainer}>

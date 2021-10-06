@@ -57,7 +57,7 @@ async function getNotificationAPI() {
           data={notifications}
           renderItem={({item})=>(
             
-            <Message text={item.body} />
+            <Message key = {item.id} text={item.body} />
             
           )}
           />

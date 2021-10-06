@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import DisplayPeople from "../components/DisplayPeople";
+import DisplayPeople from "../component/DisplayPeople";
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>

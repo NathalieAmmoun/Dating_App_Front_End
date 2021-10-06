@@ -24,9 +24,9 @@ export default function LoginPage({ navigation }) {
     loginAPI()
       .then((user_data) => {
         console.log(user_data);
-        let key = user_data.access_token;
-        console.log(key);
-        AsyncStorage.setItem('access_token', key);
+        // let key = user_data.access_token;
+        // console.log(key);
+        // AsyncStorage.setItem('access_token', key);
         navigation.navigate('HomeStack');
 
       
