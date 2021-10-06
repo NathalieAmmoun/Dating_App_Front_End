@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,23 +7,25 @@ import {
   TextInput,
 } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import ProfileCardView from "../component/Card";
+import { ScrollView } from "react-native-gesture-handler";
 // let remove =AsyncStorage.removeItem('access_token')
 
 function SearchScreen({ navigation }) {
   const [Search, setSearch] = useState("");
+  const [users,setUsers] = useState([]);
   console.log(Search);
   async function findFriendsAPI(SearchInput) {
 
-    useEffect(()=>{
-      let remove =AsyncStorage.removeItem('access_token')
-    },[])
+    // useEffect(()=>{
+    //   let remove =AsyncStorage.removeItem('access_token')
+    // },[])
 
     const response = await fetch("http://127.0.0.1:8000/api/auth/search", {
       method: "POST",
       headers: {
         Authorization:
-          "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMzQ0ODI3NSwiZXhwIjoxNjMzNTM0Njc1LCJuYmYiOjE2MzM0NDgyNzUsImp0aSI6IlZmSERSUWdyR0lWVEx6bE0iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.o98tj_37Bz1i5I62Cdhd2UzdSh9Aw3kurtCCEO0Z9qU",
+          "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMzUwNTY1MSwiZXhwIjoxNjMzNTkyMDUxLCJuYmYiOjE2MzM1MDU2NTEsImp0aSI6ImVYdzU4SE9sWTY3YnhqOTYiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.Ar3CSoD2gbD000ybCXnKkHflSOT6VIk7ym1lsa_6VI4",
         Accept: "application / json",
       },
       body: new URLSearchParams({
@@ -42,7 +44,9 @@ function SearchScreen({ navigation }) {
 
   function findFriends(Searchin) {
     findFriendsAPI(Searchin).then(results => {
-      console.log(results);
+      setUsers(results);
+    }).catch(error=>{
+      console.log(error)
     });
   }
 
@@ -51,7 +55,14 @@ function SearchScreen({ navigation }) {
       findFriends(Search)
     }
   }
-  
+
+  if (users.length>1){
+    var component = users.map((user,index) => {
+      
+      return (
+      <ProfileCardView key ={index} user={user} />
+      )})
+    }
   return (
     <View style={styles.container}>
       <View style={styles.inputView}>
@@ -62,17 +73,18 @@ function SearchScreen({ navigation }) {
           onChangeText={(Search) => setSearch(Search)}
         />
 
-        <TouchableOpacity style={styles.loginBtn} onPress={saveValue}>
+      </View>
+      <TouchableOpacity style={styles.loginBtn} onPress={saveValue}>
           <Text  style={styles.loginText}>
             SEARCH
           </Text>
         </TouchableOpacity>
-
-      </View>
-
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Search Screen</Text>
+        {/* <Text>Search Screen</Text> */}
       </View>
+      <ScrollView>
+        {component}
+      </ScrollView>
     </View>
   );
 }
@@ -96,14 +108,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 45,
     marginBottom: 20,
-    // alignItems: "center",
-    flexDirection: 'row',
 
   },
   TextInput: {
     height: 50,
-    // flex: 0.3,
     padding: 10,
+    justifyContent: "flex-end",
   },
   forgot_button: {
     height: 30,
@@ -115,12 +125,15 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
-    backgroundColor: "#FF1493",
+    backgroundColor: "#FE5267",
   },
   stretch: {
     width: 350,
     height: 350,
     resizeMode: "stretch",
   },
+  loginText:{
+    justifyContent: "flex-end",
+    color:"white",
+  }
 });
