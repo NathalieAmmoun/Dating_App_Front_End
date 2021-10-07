@@ -114,20 +114,19 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: "#FE5267",
     color: "black",
-    width: "80%",
+    width: "85%",
     alignSelf:"center",
     borderWidth: 1,
-    fontSize:"14pt", 
+    fontSize:"11pt", 
     padding: 5,
     height: 50,
-    margin: 10,
   },
   forgot_button: {
     color: "#FE5267",
     fontWeight: "bold",
   },
   loginBtn: {
-    width: "50%",
+    width: "85%",
     borderRadius: 15,
     height: 50,
     alignSelf: "center",
@@ -160,6 +159,8 @@ const styles = StyleSheet.create({
   labelText:{
     marginLeft: 40,
     fontStyle: "bold",
-    fontSize: "14pt"
+    fontSize: "12pt",
+    marginTop:10,
+    marginBottom:2
   }
 });

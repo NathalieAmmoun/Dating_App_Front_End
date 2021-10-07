@@ -158,11 +158,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding:30,
   },
-  name:{
-    fontSize:28,
-    color: "#696969",
-    fontWeight: "600"
-  },
   title:{
     fontSize:20,
     color: "#696969",
