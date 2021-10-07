@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     height: 50,
     flex: 1,
     padding: 10,
+    
   },
 
   forgot_button: {

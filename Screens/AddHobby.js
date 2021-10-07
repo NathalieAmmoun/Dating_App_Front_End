@@ -83,8 +83,6 @@ const styles = StyleSheet.create({
       backgroundColor: "#FFC0CB",
       borderRadius: 30,
       height: 45,
-      marginBottom: 20,
-      marginTop:"50%",
       alignItems: "center",
       alignSelf: "center"
     },
@@ -93,21 +91,21 @@ const styles = StyleSheet.create({
       borderRadius: 15,
       borderColor: "#FE5267",
       color: "black",
-      width: "80%",
+      width: "85%",
       alignSelf:"center",
       borderWidth: 1,
-      fontSize:"14pt", 
+      fontSize:"11pt", 
       padding: 5,
       height: 50,
-      margin: 10,
     },
     loginBtn: {
-      width: "50%",
+      width: "85%",
       borderRadius: 15,
       height: 50,
       alignSelf: "center",
       justifyContent: "center",
       backgroundColor: "#FE5267",
+      marginTop:30
     },
     loginText:{
       textAlign: "center",
@@ -121,8 +119,10 @@ const styles = StyleSheet.create({
       height:"100%",
      },
     labelText:{
-      marginLeft: 40,
-      fontStyle: "bold",
-      fontSize: "14pt"
-    }
+    marginLeft: 40,
+    fontStyle: "bold",
+    fontSize: "12pt",
+    marginTop:10,
+    marginBottom:2
+  }
   });

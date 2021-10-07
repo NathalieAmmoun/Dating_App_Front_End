@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
  
   inputView: {
     backgroundColor: "#FFC0CB",
-    borderRadius: 30,
+    borderRadius: 20,
     width: "90%",
     alignSelf: "center",
     height: 45,
@@ -221,7 +221,8 @@ const styles = StyleSheet.create({
   },
 
   title:{
-    paddingLeft: "20%"
+    paddingLeft: "20%",
+    fontSize:10,
   },
 
   stretch: {
